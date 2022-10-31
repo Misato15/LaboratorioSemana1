@@ -1,21 +1,50 @@
 const {reques, response} = require('express')
+const {ListadoSeguimiento} = require('../models/seguimiento')
+const {guardarDB, leerDB} = require('../helpers/gestorDB')
 
-const GetSeguimiento = (req = require ,res= response) =>{
-    res.send('GET Enpoint para seguimiento')
+const GetSeguimiento = (req = request, res = response) => {
+    let lista = new ListadoSeguimiento()
+    let datosJSON = leerDB('seguimiento');
+    lista.cargarTareasFromArray(datosJSON)
+    res.json(lista.listadoArr)
+
 }
 
-const PostSeguimiento = (req = require ,res=response) =>{
-    res.send('POST Enpoint para seguimiento')
+const PostSeguimiento = (req = request, res = response) =>{
+    let lista = new ListadoSeguimiento()
+    let datosJSON = leerDB('seguimiento');
+    lista.cargarTareasFromArray(datosJSON)
+    lista.crearSeguimiento(req,body)
+    guardarDB(lista.listadoArr,'seguimiento')
+    res.send('Registro Creado')
 }
 
+const PutSeguimiento = (req = request, res = reponse) =>{
+    let lista = new ListadoSeguimiento()
+    let datosJSON = leerDB('seguimiento');
+    lista.cargarTareasFromArray(datosJSON)
+    //funcion para actualizar
+   const datos = lista.listadoArr.map(p =>
+    p.id== req.params.id
+    ? {"id":p.id,...req.body}
+    : p
 
-const PutSeguimiento = (req = require ,res=response) =>{
-    res.send('PUT Enpoint para seguimiento')
+    );
+    guardarDB(datos,'seguimiento')
+    res.send('Registro Actualizado')
+
 }
 
-const DeleteSeguimiento = (req = require ,res=response) =>{
-    res.send('DELETE Enpoint para seguimiento')
+const DeleteSeguimiento =(req = request, res = response) =>{
+    let listas = new ListadoSeguimiento()
+    let datosJSON = leerDB('seguimiento');
+    lista.cargarTareaFromArray(datosJSON)
+    //funcion para eliminar
+    let data = lista.listadoArr.filter(item => item.id !== req.params.id)
+    guardarDB(data,'seguimiento')
+    res.send('Registro Eliminado')
 }
+
 module.esports={
     GetSeguimiento,
     PostSeguimiento,

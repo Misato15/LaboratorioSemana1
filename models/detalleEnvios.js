@@ -1,15 +1,14 @@
 const {v4: uuidv4} = require('uuid');
 
-class Precios{
-    constructor(cantidad,valor,estado){
+class detalleEnvios{
+    constructor(envio,paquetes){
         this.id=uuidv4()
-        this.cantidad=cantidad
-        this.valor=valor
-        this.estado=estado
+        this.envio=envio
+        this.paquetes.paquetes
     }
 }
 
-class ListadoPrecios{
+class ListadoDetalleEnvios{
     constructor(){
         this._listado = {};
     }
@@ -24,21 +23,19 @@ class ListadoPrecios{
         }
       
     cargarTareasFromArray (datos = []) {
-        datos.forEach(precios => {
-            this._listado[precios.id]=precios;
+        datos.forEach(envio => {
+            this._listado[envio.id]=envio;
         });
     }  
 
-    crearEnvios(datos){
-        const precios = new Envios(
-            datos.cantidad,
-            datos.valor,
-            datos.estado);
-            this._listado[precios.id] = precios;
+    crearDetalleEnvios(datos){
+        const envio = new detalleEnvios(
+            datos.envio,
+            datos.paquetes);
+            this._listado[envio.id] = envio;
         }
 
     }
 
     module.exports={
-        ListadoPrecios
-    }
+       ListadoDetalleEnvios    }

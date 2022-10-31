@@ -2,39 +2,50 @@ const {reques, response} = require('express')
 const {ListadoEnvios} = require('../models/envios')
 const {guardarDB, leerDB} = require('../helpers/gestorDB')
 
-const getEnvios = (req = request, res = response) => {
+const GetEnvios = (req = request, res = response) => {
     let lista = new ListadoEnvios()
     let datosJSON = leerDB('envios');
-    lista.cargarTareaFromArray(datosJSON)
+    lista.cargarTareasFromArray(datosJSON)
     res.json(lista.listadoArr)
 
 }
 
-const postEnvios = (req = request, res = response) =>{
+const PostEnvios = (req = request, res = response) =>{
     let lista = new ListadoEnvios()
     let datosJSON = leerDB('envios');
     lista.cargarTareasFromArray(datosJSON)
     lista.crearEnvios(req,body)
-    guardarDB(lista,listadoArr,'envios')
+    guardarDB(lista.listadoArr,'envios')
     res.send('Registro Creado')
 }
 
-const GetEnvios = (req = require ,res= response) =>{
-    res.send('GET Enpoint para envios')
+const PutEnvios = (req = request, res = reponse) =>{
+    let lista = new ListadoEnvios()
+    let datosJSON = leerDB('envios');
+    lista.cargarTareasFromArray(datosJSON)
+    //funcion para actualizar
+   const datos = lista.listadoArr.map(p =>
+    p.id== req.params.id
+    ? {"id":p.id,...req.body}
+    : p
+
+    );
+    guardarDB(datos,'envios')
+    res.send('Registro Actualizado')
+
 }
 
-const PostEnvios = (req = require ,res=response) =>{
-    res.send('POST Enpoint para envios')
+const DeleteEnvios =(req = request, res = response) =>{
+    let listas = new ListadoEnvios()
+    let datosJSON = leerDB('envios');
+    lista.cargarTareaFromArray(datosJSON)
+    //funcion para eliminar
+    let data = lista.listadoArr.filter(item => item.id !== req.params.id)
+    guardarDB(data,'envios')
+    res.send('Registro Eliminado')
 }
 
 
-const PutEnvios = (req = require ,res=response) =>{
-    res.send('PUT Enpoint para envios')
-}
-
-const DeleteEnvios = (req = require ,res=response) =>{
-    res.send('DELETE Enpoint para envios')
-}
 module.esports={
     GetEnvios,
     PostEnvios,

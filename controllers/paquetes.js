@@ -1,20 +1,48 @@
 const {reques, response} = require('express')
+const {ListadoPaquetes} = require('../models/paquetes')
+const {guardarDB, leerDB} = require('../helpers/gestorDB')
 
-const GetPaquetes = (req = require ,res= response) =>{
-    res.send('GET Enpoint para paquetes')
+const GetPaquetes = (req = request, res = response) => {
+    let lista = new ListadoPaquetes()
+    let datosJSON = leerDB('paquetes');
+    lista.cargarTareasFromArray(datosJSON)
+    res.json(lista.listadoArr)
+
 }
 
-const PostPaquetes = (req = require ,res=response) =>{
-    res.send('POST Enpoint para paquetes')
+const PostPaquetes = (req = request, res = response) =>{
+    let lista = new ListadoEnvios()
+    let datosJSON = leerDB('paquetes');
+    lista.cargarTareasFromArray(datosJSON)
+    lista.crearPaquetes(req,body)
+    guardarDB(lista.listadoArr,'paquetes')
+    res.send('Registro Creado')
 }
 
+const PutPaquetes= (req = request, res = reponse) =>{
+    let lista = new ListadoPaquetes()
+    let datosJSON = leerDB('paquetes');
+    lista.cargarTareasFromArray(datosJSON)
+    //funcion para actualizar
+   const datos = lista.listadoArr.map(p =>
+    p.id== req.params.id
+    ? {"id":p.id,...req.body}
+    : p
 
-const PutPaquetes = (req = require ,res=response) =>{
-    res.send('PUT Enpoint para paquetes')
+    );
+    guardarDB(datos,'paquetes')
+    res.send('Registro Actualizado')
+
 }
 
-const DeletePaquetes = (req = require ,res=response) =>{
-    res.send('DELETE Enpoint para paquetes')
+const DeletePaquetes =(req = request, res = response) =>{
+    let listas = new ListadoPaquetes()
+    let datosJSON = leerDB('paquetes');
+    lista.cargarTareaFromArray(datosJSON)
+    //funcion para eliminar
+    let data = lista.listadoArr.filter(item => item.id !== req.params.id)
+    guardarDB(data,'paquetes')
+    res.send('Registro Eliminado')
 }
 module.esports={
     GetPaquetes,

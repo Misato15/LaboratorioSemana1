@@ -7,7 +7,7 @@ const {
     PutPaquetes,
     DeletePaquetes
 
-} = require('../controllers/detallesEnvios');
+} = require('../controllers/paquetes');
 
 
 const router = Router();
@@ -15,7 +15,7 @@ const router = Router();
 
 router.allget('/', GetPaquetes)
 router.allpost('/', PostPaquetes)
-router.allput('/', PutPaquetes)
-router.alldelete('/', DeletePaquetes)
+router.allput('/id:', PutPaquetes)
+router.alldelete('/id:', DeletePaquetes)
 
 module.exports = router

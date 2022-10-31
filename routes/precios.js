@@ -7,14 +7,14 @@ const {
     PutPrecios,
     DeletePrecios
 
-} = require('../controllers/detallesEnvios');
+} = require('../controllers/precios');
 
 
 const router = Router();
 
 router.get('/', GetPrecios)
 router.post('/', PostPrecios)
-router.put('/', PutPrecios)
-router.delete('/', DeletePrecios)
+router.put('/id:', PutPrecios)
+router.delete('/id:', DeletePrecios)
 
 module.exports = router

@@ -2,7 +2,7 @@ const {v4: uuidv4} = require('uuid');
 
 class Envios{
     constructor(codigo,fecha,tracking,origen,destino,emisor,destinatario){
-        this.id=uuidv4
+        this.id=uuidv4()
         this.codigo=codigo
         this.fecha=fecha
         this.tracking=tracking
@@ -28,14 +28,21 @@ class ListadoEnvios{
         }
       
     cargarTareasFromArray (datos = []) {
-        datos.forEach(envio => {
-            this._listado[envio.id]=envio;
+        datos.forEach(envios => {
+            this._listado[envios.id]=envios;
         });
     }  
 
     crearEnvios(datos){
-        const envio = new Tarea(datos);
-        this._listado[envio.id] = envio;
+        const envios = new Envios(
+            datos.codigo,
+            datos.fecha,
+            datos.tracking,
+            datos.origen,
+            datos.destino,
+            datos.emisor,
+            datos.destinatario);
+            this._listado[envios.id] = envios;
         }
 
     }
