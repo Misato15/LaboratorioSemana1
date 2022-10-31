@@ -1,14 +1,8 @@
 require ('dotenv').config()
-const express = require ('express')
-const app = express()
+const Server = require('./models/server')
 
-app.get('/', function(req,res){
+const server = new Server();
+server.listen();
 
-    res.send('Hello World')
 
-})
 
-app.listen(process.env.PORT, ()=>
-{console.log("El puerto está corriendo el puerto TCP" + process.env.PORT)
-
-})
