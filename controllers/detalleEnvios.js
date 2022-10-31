@@ -14,12 +14,12 @@ const PostDetalleEnvios = (req = request, res = response) =>{
     let lista = new ListadoDetalleEnvios()
     let datosJSON = leerDB('detalleEnvios');
     lista.cargarTareasFromArray(datosJSON)
-    lista.crearDetalleEnvios(req,body)
+    lista.crearDetalleEnvios(req.body)
     guardarDB(lista.listadoArr,'detalleEnvios')
     res.send('Registro Creado')
 }
 
-const PutDetalleEnvios = (req = request, res = reponse) =>{
+const PutDetalleEnvios = (req = request, res = response) =>{
     let lista = new ListadoDetalleEnvios()
     let datosJSON = leerDB('detalleEnvios');
     lista.cargarTareasFromArray(datosJSON)
@@ -38,7 +38,7 @@ const PutDetalleEnvios = (req = request, res = reponse) =>{
 const DeleteDetalleEnvios =(req = request, res = response) =>{
     let lista = new ListadoDetalleEnvios()
     let datosJSON = leerDB('detalleEnvios');
-    lista.cargarTareaFromArray(datosJSON)
+    lista.cargarTareasFromArray(datosJSON)
     //funcion para eliminar
     let data = lista.listadoArr.filter(item => item.id !== req.params.id)
     guardarDB(data,'detalleEnvios')

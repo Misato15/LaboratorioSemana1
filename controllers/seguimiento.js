@@ -14,12 +14,12 @@ const PostSeguimiento = (req = request, res = response) =>{
     let lista = new ListadoSeguimiento()
     let datosJSON = leerDB('seguimiento');
     lista.cargarTareasFromArray(datosJSON)
-    lista.crearSeguimiento(req,body)
+    lista.crearSeguimiento(req.body)
     guardarDB(lista.listadoArr,'seguimiento')
     res.send('Registro Creado')
 }
 
-const PutSeguimiento = (req = request, res = reponse) =>{
+const PutSeguimiento = (req = request, res = response) =>{
     let lista = new ListadoSeguimiento()
     let datosJSON = leerDB('seguimiento');
     lista.cargarTareasFromArray(datosJSON)

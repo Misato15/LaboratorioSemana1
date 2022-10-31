@@ -14,12 +14,12 @@ const PostPrecios = (req = request, res = response) =>{
     let lista = new ListadoPrecios()
     let datosJSON = leerDB('paquetes');
     lista.cargarTareasFromArray(datosJSON)
-    lista.crearPrecios(req,body)
+    lista.crearPrecios(req.body)
     guardarDB(lista.listadoArr,'paquetes')
     res.send('Registro Creado')
 }
 
-const PutPrecios= (req = request, res = reponse) =>{
+const PutPrecios= (req = request, res = response) =>{
     let lista = new ListadoPaPrecios()
     let datosJSON = leerDB('precios');
     lista.cargarTareasFromArray(datosJSON)
@@ -38,7 +38,7 @@ const PutPrecios= (req = request, res = reponse) =>{
 const DeletePrecios =(req = request, res = response) =>{
     let lista = new ListadoPrecios()
     let datosJSON = leerDB('paprecios');
-    lista.cargarTareaFromArray(datosJSON)
+    lista.cargarTareasFromArray(datosJSON)
     //funcion para eliminar
     let data = lista.listadoArr.filter(item => item.id !== req.params.id)
     guardarDB(data,'precios')
