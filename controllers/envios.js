@@ -36,7 +36,7 @@ const PutEnvios = (req = request, res = reponse) =>{
 }
 
 const DeleteEnvios =(req = request, res = response) =>{
-    let listas = new ListadoEnvios()
+    let lista = new ListadoEnvios()
     let datosJSON = leerDB('envios');
     lista.cargarTareaFromArray(datosJSON)
     //funcion para eliminar
@@ -46,7 +46,7 @@ const DeleteEnvios =(req = request, res = response) =>{
 }
 
 
-module.esports={
+module.exports={
     GetEnvios,
     PostEnvios,
     PutEnvios,

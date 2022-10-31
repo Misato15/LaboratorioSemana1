@@ -36,7 +36,7 @@ const PutPaquetes= (req = request, res = reponse) =>{
 }
 
 const DeletePaquetes =(req = request, res = response) =>{
-    let listas = new ListadoPaquetes()
+    let lista = new ListadoPaquetes()
     let datosJSON = leerDB('paquetes');
     lista.cargarTareaFromArray(datosJSON)
     //funcion para eliminar
@@ -44,7 +44,7 @@ const DeletePaquetes =(req = request, res = response) =>{
     guardarDB(data,'paquetes')
     res.send('Registro Eliminado')
 }
-module.esports={
+module.exports={
     GetPaquetes,
     PostPaquetes,
     PutPaquetes,

@@ -1,4 +1,4 @@
-const {Router} = require ('express')
+const {Router} = require ('express');
 //Uso {Router} para destructurar un objeto y solo obtener lo que ocupo de él
 
 const {
@@ -13,9 +13,9 @@ const {
 const router = Router();
 
 
-router.allget('/', GetPaquetes)
-router.allpost('/', PostPaquetes)
-router.allput('/id:', PutPaquetes)
-router.alldelete('/id:', DeletePaquetes)
+router.get('/', GetPaquetes)
+router.post('/', PostPaquetes)
+router.put('/id:', PutPaquetes)
+router.delete('/id:', DeletePaquetes)
 
 module.exports = router

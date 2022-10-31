@@ -36,7 +36,7 @@ const PutDetalleEnvios = (req = request, res = reponse) =>{
 }
 
 const DeleteDetalleEnvios =(req = request, res = response) =>{
-    let listas = new ListadoDetalleEnvios()
+    let lista = new ListadoDetalleEnvios()
     let datosJSON = leerDB('detalleEnvios');
     lista.cargarTareaFromArray(datosJSON)
     //funcion para eliminar
@@ -49,7 +49,7 @@ const DeleteDetalleEnvios =(req = request, res = response) =>{
 
 
 
-module.esports={
+module.exports={
     GetDetalleEnvios,
     PostDetalleEnvios,
     PutDetalleEnvios,

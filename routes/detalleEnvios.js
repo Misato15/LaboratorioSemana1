@@ -1,4 +1,4 @@
-const {Router} = require ('express')
+const {Router} = require ('express');
 //Uso {Router} para destructurar un objeto y solo obtener lo que ocupo de él
 const {
     GetDetalleEnvios,

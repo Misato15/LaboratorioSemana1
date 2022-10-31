@@ -36,7 +36,7 @@ const PutPrecios= (req = request, res = reponse) =>{
 }
 
 const DeletePrecios =(req = request, res = response) =>{
-    let listas = new ListadoPrecios()
+    let lista = new ListadoPrecios()
     let datosJSON = leerDB('paprecios');
     lista.cargarTareaFromArray(datosJSON)
     //funcion para eliminar
@@ -44,7 +44,7 @@ const DeletePrecios =(req = request, res = response) =>{
     guardarDB(data,'precios')
     res.send('Registro Eliminado')
 }
-module.esports={
+module.exports={
     GetPrecios,
     PostPrecios,
     PutPrecios,

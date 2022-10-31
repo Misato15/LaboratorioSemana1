@@ -36,7 +36,7 @@ const PutSeguimiento = (req = request, res = reponse) =>{
 }
 
 const DeleteSeguimiento =(req = request, res = response) =>{
-    let listas = new ListadoSeguimiento()
+    let lista = new ListadoSeguimiento()
     let datosJSON = leerDB('seguimiento');
     lista.cargarTareaFromArray(datosJSON)
     //funcion para eliminar
@@ -45,7 +45,7 @@ const DeleteSeguimiento =(req = request, res = response) =>{
     res.send('Registro Eliminado')
 }
 
-module.esports={
+module.exports={
     GetSeguimiento,
     PostSeguimiento,
     PutSeguimiento,
