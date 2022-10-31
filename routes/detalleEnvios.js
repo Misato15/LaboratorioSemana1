@@ -1,19 +1,19 @@
 const {Router} = require ('express')
 //Uso {Router} para destructurar un objeto y solo obtener lo que ocupo de él
 const {
-    GetDetallesEnvios,
-    PostDetallesEnvios,
-    PutDetallesEnvios,
-    DeleteDetallesEnvios
+    GetDetalleEnvios,
+    PostDetalleEnvios,
+    PutDetalleEnvios,
+    DeleteDetalleEnvios
 
 } = require('../controllers/detalleEnvios');
 
 
 const router = Router();
 
-router.get('/', GetDetallesEnvios)
-router.post('/', PostDetallesEnvios)
-router.put('/:id', PutDetallesEnvios)
-router.delete('/:id', DeleteDetallesEnvios)
+router.get('/', GetDetalleEnvios)
+router.post('/', PostDetalleEnvios)
+router.put('/:id', PutDetalleEnvios)
+router.delete('/:id', DeleteDetalleEnvios)
 
 module.exports = router

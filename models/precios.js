@@ -30,7 +30,7 @@ class ListadoPrecios{
     }  
 
     crearEnvios(datos){
-        const precios = new Envios(
+        const precios = new Precios(
             datos.cantidad,
             datos.valor,
             datos.estado);

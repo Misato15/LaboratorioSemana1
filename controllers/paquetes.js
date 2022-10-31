@@ -1,4 +1,4 @@
-const {reques, response} = require('express')
+const {request, response} = require('express')
 const {ListadoPaquetes} = require('../models/paquetes')
 const {guardarDB, leerDB} = require('../helpers/gestorDB')
 

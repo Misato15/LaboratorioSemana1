@@ -1,27 +1,27 @@
-const {reques, response} = require('express')
+const {request, response} = require('express')
 const {ListadoDetalleEnvios} = require('../models/detalleEnvios')
 const {guardarDB, leerDB} = require('../helpers/gestorDB')
 
-const GetDetallesEnvios = (req = request, res = response) => {
+const GetDetalleEnvios = (req = request, res = response) => {
     let lista = new ListadoDetalleEnvios()
-    let datosJSON = leerDB('envios');
+    let datosJSON = leerDB('detalleEnvios');
     lista.cargarTareasFromArray(datosJSON)
     res.json(lista.listadoArr)
 
 }
 
-const PostDetallesEnvios = (req = request, res = response) =>{
+const PostDetalleEnvios = (req = request, res = response) =>{
     let lista = new ListadoDetalleEnvios()
-    let datosJSON = leerDB('envios');
+    let datosJSON = leerDB('detalleEnvios');
     lista.cargarTareasFromArray(datosJSON)
     lista.crearDetalleEnvios(req,body)
-    guardarDB(lista.listadoArr,'envios')
+    guardarDB(lista.listadoArr,'detalleEnvios')
     res.send('Registro Creado')
 }
 
-const PutDetallesEnvios = (req = request, res = reponse) =>{
+const PutDetalleEnvios = (req = request, res = reponse) =>{
     let lista = new ListadoDetalleEnvios()
-    let datosJSON = leerDB('envios');
+    let datosJSON = leerDB('detalleEnvios');
     lista.cargarTareasFromArray(datosJSON)
     //funcion para actualizar
    const datos = lista.listadoArr.map(p =>
@@ -30,18 +30,18 @@ const PutDetallesEnvios = (req = request, res = reponse) =>{
     : p
 
     );
-    guardarDB(datos,'envios')
+    guardarDB(datos,'detalleEnvios')
     res.send('Registro Actualizado')
 
 }
 
-const DeleteDetallesEnvios =(req = request, res = response) =>{
-    let listas = new ListadoEnvios()
-    let datosJSON = leerDB('envios');
+const DeleteDetalleEnvios =(req = request, res = response) =>{
+    let listas = new ListadoDetalleEnvios()
+    let datosJSON = leerDB('detalleEnvios');
     lista.cargarTareaFromArray(datosJSON)
     //funcion para eliminar
     let data = lista.listadoArr.filter(item => item.id !== req.params.id)
-    guardarDB(data,'envios')
+    guardarDB(data,'detalleEnvios')
     res.send('Registro Eliminado')
 }
 
@@ -50,8 +50,8 @@ const DeleteDetallesEnvios =(req = request, res = response) =>{
 
 
 module.esports={
-    GetDetallesEnvios,
-    PostDetallesEnvios,
-    PutDetallesEnvios,
-    DeleteDetallesEnvios
+    GetDetalleEnvios,
+    PostDetalleEnvios,
+    PutDetalleEnvios,
+    DeleteDetalleEnvios
 }

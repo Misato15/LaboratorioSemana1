@@ -1,4 +1,4 @@
-const {reques, response} = require('express')
+const {request, response} = require('express')
 const {ListadoSeguimiento} = require('../models/seguimiento')
 const {guardarDB, leerDB} = require('../helpers/gestorDB')
 

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const dir = './database';
+const dir = './database/';
 
 const guardarDB = (data, archivo) => {
     const path = dir + archivo + '.json'

@@ -23,19 +23,20 @@ class ListadoDetalleEnvios{
         }
       
     cargarTareasFromArray (datos = []) {
-        datos.forEach(envio => {
-            this._listado[envio.id]=envio;
+        datos.forEach(detalleEnvios => {
+            this._listado[detalleEnvios.id]=detalleEnvios;
         });
     }  
 
     crearDetalleEnvios(datos){
-        const envio = new detalleEnvios(
+        const detalleEnvio = new detalleEnvios(
             datos.envio,
             datos.paquetes);
-            this._listado[envio.id] = envio;
+            this._listado[detalleEnvios.id] = detalleEnvios;
         }
 
     }
 
     module.exports={
-       ListadoDetalleEnvios    }
+       ListadoDetalleEnvios  
+      }
